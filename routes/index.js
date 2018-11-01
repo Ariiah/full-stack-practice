@@ -13,7 +13,7 @@ const router = express.Router()
 const knex = require('../knex')
 // READ ALL records for this table
 router.get('/', (req, res, next) => {
-  knex('tablename')
+  knex('task')
     .then((rows) => {
       res.json(rows)
     })
@@ -23,7 +23,7 @@ router.get('/', (req, res, next) => {
 })
 // READ ONE record for this table
 router.get('/:id', (req, res, next) => {
-  knex('tablename')
+  knex('task')
     .where('id', req.params.id)
     .then((rows) => {
       res.json(rows)
@@ -34,7 +34,7 @@ router.get('/:id', (req, res, next) => {
 })
 // CREATE ONE record for this table
 router.post('/', (req, res, next) => {
-  knex('tablename')
+  knex('task')
     .insert({
       colname1: req.body.colname1,
       colname2: req.body.colname2,
@@ -50,7 +50,7 @@ router.post('/', (req, res, next) => {
 })
 // UPDATE ONE record for this table
 router.put('/:id', (req, res, next) => {
-    knex('tablename')
+    knex('task')
       .where('id', req.params.id)
       .limit(1)
       .update({
@@ -69,7 +69,7 @@ router.put('/:id', (req, res, next) => {
 })
 // DELETE ONE record for this table
 router.delete('/:id', (req, res, next) => {
-    knex('tablename')
+    knex('task')
       .del()
       .where('id', req.params.id)
       .then(() => {
